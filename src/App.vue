@@ -1,4 +1,6 @@
 <script setup>
+import { ref } from 'vue';
+
 let msg = "Hello world!"
 let dynamicId = 2;
 const disableBtn = true;
@@ -12,6 +14,12 @@ const google = "https://www.google.com"
 const cleckMe = () =>{
   console.log("Click Me");
 }
+
+// Reactive Value - using Ref
+const countNumber = ref(0);
+setInterval(()=>{
+  countNumber.value ++
+}, 1000)
 
 </script>
 
@@ -49,6 +57,9 @@ const cleckMe = () =>{
     <br> or <br>
     <button @click="cleckMe">Click The Button</button> 
   </div>
+
+  <!-- Reactive Value - useing Ref -->
+  <h2>Count Number : {{ countNumber }}</h2>
 </template>
 
 
