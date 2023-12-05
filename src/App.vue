@@ -34,6 +34,15 @@ setInterval(() => {
   userInfo.name = "Shovon"
 }, 3000)
 
+
+// Using v-modal
+const form = reactive({
+  email : "",
+  password: ""
+})
+
+console.log(form);
+
 </script>
 
 <template>
@@ -77,6 +86,17 @@ setInterval(() => {
   <!-- Reactive Value - useing Reactive -->
   <p>Changing the value after 3seconds</p>
   <p>User ID is: {{ userInfo.id }} and User Name is : {{ userInfo.name }}</p>
+
+  <!-- Useing V Model -->
+  <h2>User Info Form</h2>
+  <form action="#" method="post">
+    <label for="email">Email</label>
+    <input type="email" name="email" id="email" placeholder="Enter your email" v-model="form.email" required>
+    <br>
+    <label for="password">Password</label>
+    <input type="password" name="password" id="password" placeholder="Enter your password" v-model="form.password" required>
+  </form>
+  <p>User email is {{ form.email }} and user passsword is {{ form.password }}</p>
 </template>
 
 
