@@ -1,5 +1,6 @@
 <script setup>
 import { reactive, ref } from 'vue';
+import useNuber from './components/number'
 
 let msg = "Hello world!"
 let dynamicId = 2;
@@ -118,7 +119,9 @@ const productList = [
   }
 ];
 
+const number = ref(0);
 
+const {increment, decrement} = useNuber(number)
 
 </script>
 
@@ -193,6 +196,18 @@ const productList = [
       <td>{{ product.category }}</td>
     </tr>
   </table>
+
+  <!-- Invoking Method - simple data -->
+  <button @click="number++">Increment</button>
+  <span>{{ number }}</span>
+  <button @click="number--">Decrement</button>
+
+  <p>or</p>
+
+  <!-- Invoking Method - Group data -->
+  <button @click="increment">Increment</button>
+  <span>{{ number }}</span>
+  <button @click="decrement">Decrement</button>
 </template>
 
 
