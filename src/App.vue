@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { reactive, ref } from 'vue';
 
 let msg = "Hello world!"
 let dynamicId = 2;
@@ -11,15 +11,28 @@ const objectAttrs = {
 
 const textHide = false
 const google = "https://www.google.com"
-const cleckMe = () =>{
+const cleckMe = () => {
   console.log("Click Me");
 }
 
-// Reactive Value - using Ref
+// Reactive Value - using Ref [ For Single Data]
 const countNumber = ref(0);
-setInterval(()=>{
-  countNumber.value ++
+setInterval(() => {
+  countNumber.value++
 }, 1000)
+
+// Reactive Value - using Reactive [ For Group Data]
+const userInfo = reactive({
+  id: "123",
+  name: "Jaber",
+})
+
+console.log(userInfo);
+
+setInterval(() => {
+  userInfo.id = "222",
+  userInfo.name = "Shovon"
+}, 3000)
 
 </script>
 
@@ -53,13 +66,17 @@ setInterval(()=>{
 
   <!-- Button Event -->
   <div>
-    <button v-on:click="cleckMe">Click The Button</button> 
+    <button v-on:click="cleckMe">Click The Button</button>
     <br> or <br>
-    <button @click="cleckMe">Click The Button</button> 
+    <button @click="cleckMe">Click The Button</button>
   </div>
 
   <!-- Reactive Value - useing Ref -->
   <h2>Count Number : {{ countNumber }}</h2>
+
+  <!-- Reactive Value - useing Reactive -->
+  <p>Changing the value after 3seconds</p>
+  <p>User ID is: {{ userInfo.id }} and User Name is : {{ userInfo.name }}</p>
 </template>
 
 
